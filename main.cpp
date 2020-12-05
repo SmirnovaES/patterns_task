@@ -24,11 +24,11 @@ public:
     { }
 
     template <typename ... later_args>
-	return_value operator()(later_args... args) const
+    return_value operator()(later_args... args) const
     {
         std::tuple<full_args...> fullArgs = std::tuple_cat(argsStorage_, std::make_tuple(args...));
-		return funcStorage_->callFunc(fullArgs);
-	}
+        return funcStorage_->callFunc(fullArgs);
+    }
 
 private:
     class FuncStorageWrapper
@@ -53,14 +53,15 @@ private:
         T t_;
     };
 
-	std::unique_ptr<FuncStorageWrapper> funcStorage_;
+    std::unique_ptr<FuncStorageWrapper> funcStorage_;
     std::tuple<initial_args...> argsStorage_;
 };
 
 }
 
-void func() {
-	std::cout << "func" << std::endl;
+void func() 
+{
+    std::cout << "func" << std::endl;
 }
 
 void drawWindow(float x, float y, float z)
